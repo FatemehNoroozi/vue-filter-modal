@@ -2,7 +2,7 @@
     <div class="accordion">
         <h3 @click="toggle" class="accordion-header">{{ filter.title }}</h3>
         <div v-show="isOpen" class="accordion-content">
-            <input v-if="filter.hasSearch" type="text" v-model="searchTerm" placeholder="جستجو..." />
+            <input v-if="filter.hasSearch" type="text" v-model="searchTerm" placeholder="Search" />
             <div v-for="item in filteredItems" :key="item.id">
                 <div v-if="filter.mode === 'single'">
                     <input type="radio" :id="item.id" :name="filter.filterKey" @change="selectItem(item)" />

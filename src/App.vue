@@ -1,14 +1,14 @@
 <template>
     <div class="app">
-        <button @click="showModal = true">باز کردن فیلترها</button>
+        <button @click="showModal = true">Show Search Modal</button>
         <modal v-if="showModal" @close="closeModal" :filters="filters" @filter-selected="updateSelectedFilters"></modal>
         <div class="selected-filters">
-            <h2>فیلترهای انتخاب‌شده:</h2>
+            <h2>Selected Filters</h2>
             <div v-for="(filter, index) in selectedFilters" :key="index" class="filter-item">
                 <span>{{ filter }}</span>
-                <button @click="removeFilter(filter)">حذف</button>
+                <button @click="removeFilter(filter)">Remove</button>
             </div>
-            <button v-if="selectedFilters.length" @click="clearFilters">حذف تمامی فیلترها</button>
+            <button v-if="selectedFilters.length" @click="clearFilters">Remove All Filters</button>
         </div>
     </div>
 </template>

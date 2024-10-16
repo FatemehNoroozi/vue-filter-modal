@@ -2,11 +2,11 @@
     <div class="modal">
         <div class="modal-content">
             <span class="close" @click="$emit('close')">&times;</span>
-            <h2>فیلترها</h2>
+            <h2>Filters</h2>
             <div v-for="filter in filters" :key="filter.filterKey">
                 <FilterAccordion :filter="filter" @filter-selected="$emit('filter-selected', $event)"></FilterAccordion>
             </div>
-            <button @click="$emit('close')">بستن</button>
+            <button @click="$emit('close')">X</button>
         </div>
     </div>
 </template>
