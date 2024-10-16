@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    padding: 20px;
+    @media (max-width: 768px) {
+        padding: 10px;
+    }
+}
+
+button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+    
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px; /* حداکثر عرض برای موبایل */
+    border-radius: 8px;
+
+    @media (max-width: 768px) {
+        margin: 5% auto; /* تنظیم حاشیه برای موبایل */
+        padding: 15px; /* تنظیم padding برای موبایل */
+    }
+}
+
+.accordion-header {
+    cursor: pointer;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+
+    @media (max-width: 768px) {
+        font-size: 14px; /* کاهش اندازه فونت برای موبایل */
+    }
+}
+
+.accordion-content {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.selected-filters {
+    margin-top: 20px;
+
+    @media (max-width: 768px) {
+        margin-top: 10px;
+    }
+}
+
+.filter-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
