@@ -10,45 +10,21 @@ Vue.use(Vuex);
 // ایجاد استور Vuex
 const store = new Vuex.Store({
   state: {
-    selectedFilters: [], // آرایه برای نگهداری فیلترهای انتخاب‌شده
+    selectedFilters: [], // آرایه برای نگهداری فرزندان انتخاب‌شده
   },
   mutations: {
-    addFilter(state, filter) {
-      const existingFilterIndex = state.selectedFilters.findIndex(
-        (f) => f.id === filter.id
-      );
-      if (existingFilterIndex !== -1) {
-        // اگر فیلتر وجود دارد، فرزندان را به‌روزرسانی می‌کنیم
-        Vue.set(state.selectedFilters, existingFilterIndex, {
-          ...state.selectedFilters[existingFilterIndex],
-          childs: filter.childs,
-        });
-      } else {
-        // اگر فیلتر وجود ندارد، فیلتر جدید را به آرایه اضافه می‌کنیم
-        state.selectedFilters.push(filter);
+    // اضافه کردن child جدید
+    addChild(state, child) {
+      const existingChild = state.selectedFilters.find((c) => c.id === child.id);
+      if (!existingChild) {
+        state.selectedFilters.push(child); // افزودن child جدید به selectedFilters
       }
     },
 
-    removeFilter(state, filterId) {
-      state.selectedFilters = state.selectedFilters.filter(
-        (filter) => filter.id !== filterId
-      ); // حذف فیلتر با ID مشخص
-    },
-    updateFilter(state, updatedFilter) {
-      const index = state.selectedFilters.findIndex(
-        (filter) => filter.id === updatedFilter.id
-      ); // پیدا کردن ایندکس فیلتر
-      if (index !== -1) {
-        Vue.set(state.selectedFilters, index, updatedFilter); // به‌روزرسانی فیلتر
-      }
-    },
-    // متد جدید برای حذف یک child از selectedFilters
-    removeChild(state, { filterId, childId }) {
-      const filter = state.selectedFilters.find((f) => f.id === filterId);
-      if (filter && filter.childs) {
-        filter.childs = filter.childs.filter((child) => child.id !== childId);
-      }
-    },
+    // حذف یک child
+    removeChild(state, childId) {
+      state.selectedFilters = state.selectedFilters.filter((child) => child.id !== childId);
+    }
   },
 });
 

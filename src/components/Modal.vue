@@ -30,15 +30,11 @@ export default {
             // selectedFilters: []
         }
     },
-
-
     
     methods: {
         handleFilterSelected(event) {
             this.$emit('filter-selected', event);
             console.log("tezt", event)
-            // this.selectedFilters.push(event) 
-            // this.$store.commit('addFilter', event);
         }
     },
 

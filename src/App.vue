@@ -1,12 +1,9 @@
 <template>
     <div class="app">
         <button @click="showModal = true">Show Search Modal</button>
-        {{ filters }}
         <modal v-if="showModal" @close="closeModal" :filters="filters" @filter-selected="updateSelectedFilters"></modal>
         <div class="selected-filters">
             <h2>Selected Filters</h2>
-
-         {{ selectedFilters }}
         
             <div v-for="(filter, index) in selectedFilters" :key="index" class="filter-item">
                 <span>{{ filter }}</span>
@@ -41,10 +38,8 @@ export default {
             this.showModal = false;
         },
         updateSelectedFilters(filter) {
+            console.log("filter", filter)
             this.$store.commit('addFilter', filter);
-            // if (!this.selectedFilters.includes(filter)) {
-            //     this.selectedFilters.push(filter);
-            // this.$store.commit('addFilter', filter);
 
         },
         // removeFilter(filter) {
@@ -55,7 +50,6 @@ export default {
         },
 
         removeFilter(filter) {
-            console.log("filter", filter )
             this.$store.commit('removeFilter', filter);  // حذف فیلتر با ID مشخص
         },
         editFilter(filter) {
